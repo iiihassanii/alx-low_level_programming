@@ -17,5 +17,6 @@ int main(void)
 		putchar(nu + '0');
 		nu++;
 	}
+	putchar('\n');
 	return (0);
 }

@@ -16,8 +16,9 @@ int main(void)
 	{
 		putchar(nu);
 		if (nu == 57)
-			nu+= 39;
+			nu += 39;
 		nu++;
 	}
 	putchar('\n');
+	return (0);
 }
