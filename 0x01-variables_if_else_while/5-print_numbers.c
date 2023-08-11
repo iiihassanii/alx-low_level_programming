@@ -10,15 +10,9 @@
 
 int main(void)
 {
-	char ch = 'a';
+	int i = 0;
 
-	while (ch <= 'z')
-	{
-		if (ch == 'q' || ch == 'e')
-			ch++;
-		putchar(ch);
-		ch++;
-	}
-	putchar('\n');
+	for (i ; i < 10 ; i++)
+		printf("%i", i);
 	return (0);
 }
