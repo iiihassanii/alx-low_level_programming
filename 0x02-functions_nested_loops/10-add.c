@@ -12,13 +12,14 @@
 
 int add(int n1, int n2)
 {
-	n1 = n1 + n2;
-	if (n1 > 9)
+	int sum;
+	sum = n1 + n2;
+	if (sum > 9)
 	{
-		_putchar((n1 / 10) + 48);
-		_putchar((n1 % 10) + 48);
+		_putchar((sum / 10) + 48);
+		_putchar((sum % 10) + 48);
 	}
 	else
-		_putchar(n1 + 48);
+		_putchar(sum + 48);
 	return (0);
 }
