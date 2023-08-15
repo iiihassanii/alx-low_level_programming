@@ -1,4 +1,4 @@
-#include <stdio.h>
+#include "main.h"
 
 /**
  * main - Entry point
@@ -8,8 +8,14 @@
  * Return: Always 0 (Success)
  */
 
+
 int main(void)
 {
-	printf("_putchar");
+	char str[] = "_putchar";
+	int len;
+
+	for (len = 0 ; len < 8 ; len++)
+		_putchar(str[len]);
+	_putchar("\n");
 	return (0);
 }
