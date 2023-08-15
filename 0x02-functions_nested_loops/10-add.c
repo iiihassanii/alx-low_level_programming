@@ -2,7 +2,7 @@
 #include <ctype.h>
 
 /**
- * _abs - Description: A C program that print
+ * add - Description: A C program that print
  *
  * @n1: input
  * @n2 : inpdfff
