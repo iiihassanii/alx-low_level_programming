@@ -19,7 +19,7 @@ void times_table(void)
 			{
 				_putchar((k / 10) + 48);
 				_putchar((k % 10) + 48);
-				if (i < 9)
+				if (j < 9)
 				{
 					_putchar(' ');
 					_putchar(',');
@@ -28,7 +28,7 @@ void times_table(void)
 			else
 			{
 				_putchar(k + 48);
-				if (i < 9)
+				if (j < 9)
 				{
 					_putchar(',');
 					_putchar(' ');
