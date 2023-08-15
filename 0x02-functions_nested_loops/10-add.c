@@ -20,4 +20,5 @@ int add(int n1, int n2)
 	}
 	else
 		_putchar(n1 + 48);
+	return (0);
 }
