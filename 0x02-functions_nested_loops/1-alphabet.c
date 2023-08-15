@@ -1,7 +1,7 @@
 #include "main.h"
 
 /**
- * Description: A C program that print
+ * print_alphabet - Description: A C program that print
  *
  */
 
