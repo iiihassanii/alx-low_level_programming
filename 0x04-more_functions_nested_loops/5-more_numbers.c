@@ -1,8 +1,7 @@
 #include "main.h"
-#include <ctype.h>
 
 /**
- * more_numbers - from 0 to 9, followed by a new line.
+ * more_numbers - from 0 to 14, followed by a new line.
  *
  * Return: void
  */
@@ -15,7 +14,7 @@ void more_numbers(void)
 	{
 		for (j ; j < 15 ; j++)
 		{
-			if (i >= 10)
+			if (j >= 10)
 			{
 				_putchar('1');
 			}
