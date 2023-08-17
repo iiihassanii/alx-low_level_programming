@@ -2,7 +2,7 @@
 #include <stdio.h>
 
 /**
- * _islower - Description: A C program that print
+ * _isupper - Description: A C program that print
  *
  * @c: input
  *
