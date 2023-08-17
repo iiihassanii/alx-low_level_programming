@@ -6,11 +6,11 @@
 
 void more_numbers(void)
 {
-	int i, j;
+	int i = 1, j = 0;
 
-	for (i = 1 ; i <= 10 ; i++)
+	for (i ; i <= 10 ; i++)
 	{
-		for (j = 0 ; j <= 15 ; j++)
+		for (j ; j <= 15 ; j++)
 		{
 			if (j > 10)
 				_putchar('1');
