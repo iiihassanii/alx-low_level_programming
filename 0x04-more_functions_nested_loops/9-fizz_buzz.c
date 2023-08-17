@@ -31,4 +31,5 @@ int main(void)
 		else
 			printf("\n");
 	}
+	return (0);
 }
