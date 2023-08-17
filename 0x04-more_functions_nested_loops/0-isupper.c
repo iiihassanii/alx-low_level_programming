@@ -1,12 +1,9 @@
-#include "main"
-#include <stdio.h>
+#include "main.h"
 
 /**
- * _isupper - Description: A C program that print
- *
- * @c: input
- *
- * Return: 1 if c is lowercase - 0 somthind else
+ * _isupper - check for uppercase
+ *@c: parameter to be checked
+ * Return: Returns 1 if c is uppercase Returns 0 otherwise
  */
 
 int _isupper(int c)
