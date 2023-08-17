@@ -2,7 +2,7 @@
 #include <ctype.h>
 
 /**
- * _islower - Description: A C program that print
+ * print_line - Description: A C program that print
  *
  * @n: input
  *
