@@ -1,16 +1,14 @@
 #include "main.h"
 
 /**
- * more_numbers - from 0 to 14, followed by a new line.
- *
- * Return: void
+ * more_numbers - print more numbers
  */
 
 void more_numbers(void)
 {
-	int i = 0, j = 0;
+	int i, j;
 
-	for (i ; i < 10 ; i++)
+	for (i = 1; i <= 10; i++)
 	{
 		for (j = 0; j <= 14; j++)
 		{
