@@ -2,7 +2,7 @@
 #define MAIN_H
 
 #include <stdio.h>
-
+int _putchar(int c);
 int _isupper(int c);
 
 #endif
