@@ -12,5 +12,5 @@ void print_numbers(void)
 
 	for (i ; i < 10; i++)
 		_putchar(i + '48');
-	_PUTCHAR('\n');
+	_putchar('\n');
 }
