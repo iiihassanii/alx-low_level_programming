@@ -6,7 +6,7 @@
  * Return: Void
  */
 
-void _puts(char *str);
+void _puts(char *str)
 {
 	while (*s != '\0')
 	{
