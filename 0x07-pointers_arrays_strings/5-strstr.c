@@ -21,5 +21,5 @@ char *_strstr(char *haystack, char *needle)
 			return (haystack + i - fo + 1);
 		}
 	}
-	return (i);
+	return (NULL);
 }
