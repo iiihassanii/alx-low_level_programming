@@ -4,6 +4,7 @@
  * print_diagsums - print_diagsums
  * @a:matrix
  * @ size: size of matrix
+ * Return: void
  */
 
 void print_diagsums(int *a, int size)
