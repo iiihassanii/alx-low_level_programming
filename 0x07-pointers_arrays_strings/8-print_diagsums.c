@@ -3,7 +3,7 @@
 /**
  * print_diagsums - print_diagsums
  * @a:matrix
- * @ size: size of matrix
+ * @size: size of matrix
  * Return: void
  */
 
