@@ -1,8 +1,7 @@
 #include "main.h"
 
 /**
- * _strspn - gets the length of
- *  a prefix substring.
+ * _strspn - prefix substring.
  *  @s: initial segment
  *  @accept: consist byte
  *  Return: lenght
@@ -14,7 +13,7 @@ unsigned int _strspn(char *s, char *accept)
 
 	for (i = 0; s[i] != '\0'; i++)
 	{
-		for (j = 0; accept != s[i]; j++)
+		for (j = 0; accepti[j] != s[i]; j++)
 		{
 			if (accept[j] == '\0')
 				return (i);
