@@ -1,10 +1,11 @@
 #include <stdio.h>
 
 /**
- * main - print name if the program
- * @argc : int
- * @argv: list
- * Return : 0;
+ * main - prints its name, followed by a new line.
+ * @argc: argument count
+ * @argv: arguments
+ *
+ * Return: 0
  */
 
 int main(int argc, char *argv[])
