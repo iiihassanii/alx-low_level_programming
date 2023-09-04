@@ -6,15 +6,17 @@
  *
  * @size : size of array
  * @c : save c
+ *
+ * Return: a pointer to the array, or NULL if it fails
  */
 
 char *create_array(unsigned int size, char c)
 {
-	char *ptr = malloc(sizeof(char) * size);
+	char *ptr = malloc(size);
 
 	if (size == 0 || c == 0)
 		return (0);
 	while (size--)
-		ptr[size]= c;
+		ptr[size] = c;
 	return (ptr);
 }
