@@ -32,12 +32,12 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
 	}
 	len = len1 + len2;
 	str = malloc(sizeof(char) * (len + 1));
-	if (s == NULL)
+	if (str == NULL)
 		return (NULL);
 	for (i = 0; i < len1; i++)
-		s[i] = s1[i];
+		str[i] = s1[i];
 	for (i = 0; i < len2; i++)
-		s[i + len1] = s2[i];
-	s[len] = '\0';
-	return (s);
+		str[i + len1] = s2[i];
+	str[len] = '\0';
+	return (str);
 }
