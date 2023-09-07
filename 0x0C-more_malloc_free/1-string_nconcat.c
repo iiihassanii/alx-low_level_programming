@@ -15,15 +15,18 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
 	int len1, len2, len, i;
 	char *str;
 
-	len1 = len2 = 0;
-	if (s1 != NULL)
+	if (s1 == NULL)
+		len1 = 0;
+	else
 	{
-		for (len1; s1[len1]; ++len1)
+		for (len1 = 0; s1[len1] != '\0'; ++len1)
 		;
 	}
-	if (s2 != NULL)
+	if (s2 == NULL)
+		len2 = 0;
+	else
 	{
-		for (len2 = 0; s2[len2]; ++len2)
+		for (len2 = 0; s2[len2] != '\0'; ++len2)
 		;
 	}
 	if (n < len2)
