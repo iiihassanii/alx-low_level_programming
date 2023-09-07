@@ -12,36 +12,35 @@
 
 char *string_nconcat(char *s1, char *s2, unsigned int n)
 {
-	unsigned int x, y, z;
-	char *s;
+	int len1, len2, len, i;
+	char *str;
 
 	if (s1 == NULL)
-	{
-		x = 0;
-	}
+		len1 = 0;
 	else
 	{
-		for (x = 0; s1[x]; ++x)
+		for (len1 = 0; s1[len1] != '\0'; ++len1)
 		;
 	}
 	if (s2 == NULL)
-	{
-		y = 0;
-	}
+		len2 = 0;
 	else
 	{
-		for (y = 0; s2[y]; ++y)
+		for (len2 = 0; s2[len2] != '\0'; ++len2)
 		;
 	}
-	if (y > n)
-		y = n;
-	s = malloc(sizeof(char) * (x + y + 1));
-	if (s == NULL)
+	if (n < len2)
+	{
+		len2 = n;
+	}
+	len = len1 + len2;
+	str = malloc(sizeof(char) * (len + 1));
+	if (str == NULL)
 		return (NULL);
-	for (z = 0; z < x; z++)
-		s[z] = s1[z];
-	for (z = 0; z < y; z++)
-		s[z + x] = s2[z];
-	s[x + y] = '\0';
-	return (s);
+	for (i = 0; i < len1; i++)
+		str[i] = s1[i];
+	for (i = 0; i < len2; i++)
+		str[i + len1] = s2[i];
+	str[len] = '\0';
+	return (str);
 }
