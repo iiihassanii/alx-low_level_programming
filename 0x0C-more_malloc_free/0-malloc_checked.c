@@ -1,8 +1,12 @@
 #include <stdlib.h>
+#include <stdio.h>
 #include "main.h"
 
 /**
- * 
+ * malloc_checked - check allocation
+ *
+ * @b : allocated memory
+ * Return:pointer to the allocated memory
  */
 
 void *malloc_checked(unsigned int b)
