@@ -24,7 +24,7 @@ dog_t *new_dog(char *name, float age, char *owner)
 	if (dog == NULL)
 		return (NULL);
 	/*malloc for name in dog record & check*/
-	nameLen = strlen(*name);
+	nameLen = strlen(name);
 	dog->name = malloc(sizeof(char) * nameLen);
 	if (dog->name == NULL)
 	{
@@ -38,7 +38,7 @@ dog_t *new_dog(char *name, float age, char *owner)
 	dog->age = age;
 
 	/*malloc for owner's recoed*/
-	ownerLen = strlen(*owner);
+	ownerLen = strlen(owner);
 	dog->owner = malloc(sizeof(char) * ownerLen);
 	if (dog->owner == NULL)
 	{
