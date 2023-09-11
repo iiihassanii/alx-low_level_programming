@@ -9,7 +9,7 @@
  * @age: float age value
  * @owner: pointer to owner's name
  *
- * Return: VOID 
+ * Return: VOID
  */
 
 void init_dog(struct dog *d, char *name, float age, char *owner)
