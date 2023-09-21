@@ -1,34 +1,52 @@
 #include "lists.h"
 
 /**
- * add_node_end - add
- * @head: ...
- * @str: .....
- * Return: ....
+ * _strlen - finds the length of a string
+ * @str: string to find the length of
+ *
+ * Return: length of string
  */
 
+unsigned int _strlen(char *str)
+{
+	unsigned int i;
+
+	for (i = 0; str[i]; i++)
+		;
+	return (i);
+}
+
+/**
+ * add_node_end - adds a new node to the end of linked list
+ * @head: double pointer to a linked list
+ * @str: string to add to the new node
+ *
+ * Return: pointer to the new node
+ */
 list_t *add_node_end(list_t **head, const char *str)
 {
-	list_t *new_n = malloc(sizeof(list_t));
-	list_t *node = *head;
+	list_t *new, *tmp;
 
-	if (!head || !new_n)
+	if (str == NULL)
+		return (NULL);
+	new = malloc(sizeof(list_t));
+	if (new == NULL)
 		return (NULL);
 
-	if (str)
+	new->str = strdup(str);
+	new->len = _strlen(new->str);
+	new->next = NULL;
+
+	/* check if there is head - if 0 make new the head */
+	if (*head == NULL)
 	{
-		new_n->str = strdup(str);
-		if (!new_n->str)
-			return (NULL);
-		new_n->len = _len(new_n->str);
+		*head = new;
+		return (new);
 	}
-	if (node)
-	{
-		while (node->next)
-			node = node->next;
-		node = new_n->next;
-	}
-	else
-		*head = new_n;
-	return (new_n);
+
+	tmp = *head;
+	while (tmp->next)
+		tmp = tmp->next;
+	tmp->next = new;
+	return (new);
 }
