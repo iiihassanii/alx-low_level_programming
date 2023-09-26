@@ -13,12 +13,12 @@ size_t print_listint_safe(const listint_t *head)
 	size_t counter_check;
 
 	/*check head*/
-	if (!head)
-		exit(98);
 
 	corrent = head;
 	while (corrent)
 	{
+		if (!head)
+			exit(98);
 		printf("[%p] %d\n", (void *)corrent, corrent->n);
 		counter++;
 		corrent = corrent->next;
