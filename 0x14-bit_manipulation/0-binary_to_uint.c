@@ -3,8 +3,8 @@
 
 /**
  * binary_to_uint - convert a binary number to an unsigned int
- * @b: char string
- * Return: converted decimal number or 0 if there is an unconvertable char
+ * @b: numbers
+ * Return: int
  */
 
 unsigned int binary_to_uint(const char *b)
