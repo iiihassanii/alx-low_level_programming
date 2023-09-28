@@ -3,6 +3,7 @@
 /**
  * print_binary - print binary
  * @n: decimal number
+ * Return: void
  */
 
 void print_binary(unsigned long int n)
