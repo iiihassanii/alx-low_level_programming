@@ -20,7 +20,7 @@ int main(int ac, char **av)
 	char buff[1024];
 
 	if (ac != 3)
-		fprintf(stderr, "Usage: cp file_from file_to\n"), exit(97);
+		dprintf(STDERR_FILENO, "Usage: cp file_from file_to\n"), exit(97);
 	ofile_from = open(av[1], O_RDONLY); /*open file from "the first file" */
 	if (ofile_from == -1)
 		fprintf(stderr, "Error: Can't read from file %s\n", av[1]), exit(98);
