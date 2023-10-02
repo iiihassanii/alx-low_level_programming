@@ -26,22 +26,28 @@ int main(int ac, char **av)
 		fprintf(stderr, "Error: Can't read from file %s\n", av[1]), exit(98);
 	ofile_to = open(av[2], O_CREAT | O_RDWR | O_TRUNC, PER);
 	if (ofile_to == -1)
-	{
-		fprintf(stderr, "Error: Can't write to %s\n", av[2]);
-		close(ofile_from);
-		exit(99);
-	}
+		fprintf(stderr, "Error: Can't write to %s\n", av[2]), exit(99);
 	lenr = 1024;
 	while (lenr == 1024)
 	{
 		lenr = read(ofile_from, buff, 1024);
 		if (lenr == -1)
-			fprintf(stderr, "Error: Can't read from file %s\n", av[1]), exit(98);
+		{
+			fprintf(stderr, "Error: Can't read from file %s\n", av[1]);
+			close(ofile_from);
+			close(ofile_to);
+			exit(98);
+		}
 		lenw = write(ofile_to, buff, lenr);
 		if (lenw != lenr)
 			lenw = -1;
 		if (lenw == -1)
-			fprintf(stderr, "Error: Can't write to %s\n", av[2]), exit(99);
+		{
+			fprintf(stderr, "Error: Can't write to %s\n", av[2]);
+			 close(ofile_from);
+			  close(ofile_to);
+			exit(99);
+		}
 	}
 
 	ofile_from = close(ofile_from);
