@@ -38,6 +38,6 @@ int main(int ac, char **av)
 	if (ofile_from)
 		fprintf(stderr, "Error: Can't close fd %d\n", ofile_from), exit(100);
 	if (ofile_to)
-		fprintf(stderr, "Error: Can't close fd %d\n", ofile_from), exit(100);
+		fprintf(stderr, "Error: Can't close fd %d\n", ofile_to), exit(100);
 	return (0);
 }
