@@ -16,6 +16,7 @@
 int main(int ac, char **av)
 {
 	int ofile_from, ofile_to;
+	ssize_t lenr, lenw;
 	ssize_t rbuff;
 	char buff[1024];
 
@@ -29,12 +30,18 @@ int main(int ac, char **av)
 	if (ofile_to == -1)
 		fprintf(stderr, "Error: Can't write to %s\n", av[2]), exit(99);
 
-	while ((rbuff =  read(ofile_from, buff, 1024)) > 0)
-		if (write(ofile_to, buff, rbuff) != rbuff)
-			fprintf(stderr, "Error: Can't read from file %s\n", av[1]), exit(99);
-
-	if (rbuff == -1)
-		fprintf(stderr, "Error: Can't read from file %s\n", av[1]), exit(98);
+	lenr = 1024;
+	while (lenr == 1024)
+	{
+		lenr = read(ofile_from, buff, 1024);
+		if (lenr == -1)
+			fprintf(stderr, "Error: Can't read from file %s\n", av[1]), exit(98);
+		lenw = write(ofile_to, buff, lenr);
+		if (lenw != lenr)
+			lenw = -1;
+		if (lenw == -1)
+			fprintf(stderr, "Error: Can't write to %s\n", av[2]), exit(99);
+	}
 
 	ofile_from = close(ofile_from);
 	ofile_to = close(ofile_to);
