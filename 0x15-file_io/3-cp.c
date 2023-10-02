@@ -17,7 +17,6 @@ int main(int ac, char **av)
 {
 	int ofile_from, ofile_to;
 	ssize_t lenr, lenw;
-	ssize_t rbuff;
 	char buff[1024];
 
 	if (ac != 3)
