@@ -1,49 +1,88 @@
 #include "main.h"
-#include <stdio.h>
 #include <stdlib.h>
-#include <fcntl.h>
-#include <unistd.h>
-#include <sys/stat.h>
+#include <stdio.h>
+#define MAXSIZE 1024
 
-#define PER (S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP | S_IROTH)
+
 /**
- * main - check the code
- * @ac: ........
- * @av: a.ds.ad.
- * Return: Always 0.
- */
-
-int main(int ac, char **av)
+ * exit_ - ......
+ *
+ * @error: .....
+ * @str: .......
+ * @fd: ...
+ *
+ * Return: 0 on success
+*/
+int exit_(int error, char *str, int fd)
 {
-	int ofile_from, ofile_to;
-	ssize_t lenr, lenw;
-	char buff[1024];
-
-	if (ac != 3)
-		dprintf(STDERR_FILENO, "Usage: cp file_from file_to\n"), exit(97);
-	ofile_from = open(av[1], O_RDONLY); /*open file from "the first file" */
-	if (ofile_from == -1)
-		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", av[1]), exit(98);
-	ofile_to = open(av[2], O_CREAT | O_RDWR | O_TRUNC, 0664);
-	if (ofile_to == -1)
-		fprintf(stderr, "Error: Can't write to %s\n", av[2]), exit(99);
-	lenr = 1024;
-	while (lenr == 1024)
+	switch (error)
 	{
-		lenr = read(ofile_from, buff, 1024);
-		if (lenr == -1)
-			dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", av[1]), exit(98);
-		lenw = write(ofile_to, buff, lenr);
-		if (lenw != lenr)
-			lenw = -1;
-		if (lenw == -1)
-			fprintf(stderr, "Error: Can't write to %s\n", av[2]), exit(99);
+		case 97:
+			dprintf(STDERR_FILENO, "Usage: cp file_from file_to\n");
+			exit(error);
+		case 98:
+			dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", str);
+			exit(error);
+		case 99:
+			dprintf(STDERR_FILENO, "Error: Can't write to %s\n", str);
+			exit(error);
+		case 100:
+			dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fd);
+			exit(error);
+		default:
+			return (0);
 	}
-	ofile_from = close(ofile_from);
-	ofile_to = close(ofile_to);
-	if (ofile_from)
-		fprintf(stderr, "Error: Can't close fd %d\n", ofile_from), exit(100);
-	if (ofile_to)
-		fprintf(stderr, "Error: Can't close fd %d\n", ofile_to), exit(100);
+}
+
+/**
+ * main - ...
+ *
+ * @argc: ....
+ * @argv: ...
+ *
+ * Return: 0 for success.
+*/
+int main(int argc, char *argv[])
+{
+	int file_in, file_out;
+	int read_stat, write_stat;
+	int close_in, close_out;
+	char buffer[MAXSIZE];
+
+	/*if arguments are not 3*/
+	if (argc != 3)
+		exit_(97, NULL, 0);
+
+	/*sets file descriptor for copy from file*/
+	file_in = open(argv[1], O_RDONLY);
+	if (file_in == -1)
+		exit_(98, argv[1], 0);
+
+	/*sets file descriptor for copy to file*/
+	file_out = open(argv[2], O_CREAT | O_TRUNC | O_WRONLY, 0664);
+	if (file_out == -1)
+		exit_(99, argv[2], 0);
+
+	/*reads file_in as long as its not NULL*/
+	while ((read_stat = read(file_in, buffer, MAXSIZE)) != 0)
+	{
+		if (read_stat == -1)
+			exit_(98, argv[1], 0);
+
+		/*copy and write contents to file_out*/
+		write_stat = write(file_out, buffer, read_stat);
+		if (write_stat == -1)
+			exit_(99, argv[2], 0);
+	}
+	/*close the files*/
+
+	close_in = close(file_in);
+	if (close_in == -1)
+		exit_(100, NULL, file_in);
+
+	close_out = close(file_out);
+	if (close_out == -1)
+		exit_(100, NULL, file_out);
+
 	return (0);
 }
