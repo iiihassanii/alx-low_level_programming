@@ -23,7 +23,7 @@ int main(int ac, char **av)
 		dprintf(STDERR_FILENO, "Usage: cp file_from file_to\n"), exit(97);
 	ofile_from = open(av[1], O_RDONLY); /*open file from "the first file" */
 	if (ofile_from == -1)
-		fprintf(stderr, "Error: Can't read from file %s\n", av[1]), exit(98);
+		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", av[1]), exit(98);
 	ofile_to = open(av[2], O_CREAT | O_RDWR | O_TRUNC, 0664);
 	if (ofile_to == -1)
 		fprintf(stderr, "Error: Can't write to %s\n", av[2]), exit(99);
@@ -32,7 +32,7 @@ int main(int ac, char **av)
 	{
 		lenr = read(ofile_from, buff, 1024);
 		if (lenr == -1)
-			fprintf(stderr, "Error: Can't read from file %s\n", av[1]), exit(98);
+			dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", av[1]), exit(98);
 		lenw = write(ofile_to, buff, lenr);
 		if (lenw != lenr)
 			lenw = -1;
