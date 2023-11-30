@@ -2,6 +2,7 @@
 #include <string.h>
 #include <stdio.h>
 #include "hash_tables.h"
+int shash_table_set(shash_table_t *ht, const char *key, const char *value);
 
 /**
  * shash_table_create - Creates a sorted hash table
@@ -111,7 +112,7 @@ int shash_table_set(shash_table_t *ht, const char *key, const char *value)
 }
 
 /**
- * shash_table_get - Retrieves a value associated with a key in a sorted hash table
+ * shash_table_get - Retrieves a value
  * @ht: The hash table
  * @key: The key to search for
  *
