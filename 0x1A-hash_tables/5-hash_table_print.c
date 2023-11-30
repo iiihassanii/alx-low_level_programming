@@ -1,10 +1,13 @@
 #include "hash_tables.h"
-
+/**
+ * hash_table_print - Prints the keys and values of a hash table.
+ * @ht: The hash table to print.
+ */
 void hash_table_print(const hash_table_t *ht)
 {
 	unsigned long int i;
 	hash_node_t *node;
-	char f = 0;
+	char flag = 0; /* 0 while no data has been printed yet */
 
 	if (ht == NULL || ht->array == NULL)
 		return;
@@ -14,10 +17,10 @@ void hash_table_print(const hash_table_t *ht)
 		node = ht->array[i];
 		while (node != NULL)
 		{
-			if (f == 1)
+			if (flag == 1)
 				printf(", ");
-			printf("'%s': '%s'", ht->array[i]->key, ht->array[i]->value);
-			f = 1;
+			printf("'%s': '%s'", node->key, node->value);
+			flag = 1;
 			node = node->next;
 		}
 	}
