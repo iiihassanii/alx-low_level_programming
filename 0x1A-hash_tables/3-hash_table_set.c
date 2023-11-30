@@ -18,6 +18,15 @@ hash_node_t *create_node(const char *key, const char *value)
 
 	node->key = strdup(key);
 	node->value = strdup(value);
+	if (node == NULL)
+	{
+		return (0);
+	}
+	if (node->key == NULL)
+	{
+		free(node);
+		return (0);
+	}
 	node->next = NULL;
 
 	return (node);
@@ -33,15 +42,14 @@ hash_node_t *create_node(const char *key, const char *value)
 int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 {
 	unsigned long int index;
-	char *value_copy;
 	hash_node_t *node, *check_node, *collision;
 
 	if (key == NULL || *key == '\0' || ht == NULL || value == NULL)
 		return (0);
 
 	index = key_index((const unsigned char *)key, ht->size);
-	value_copy = strdup(value);
-	if (value_copy == NULL)
+
+	if (value == NULL)
 		return (0);
 	/*Insetr key for the first time*/
 	if (ht->array[index] == NULL)
@@ -58,7 +66,7 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 		if (strcmp(check_node->key, key) == 0)
 		{
 			free(check_node->value), check_node->value = NULL;
-			check_node->value = value_copy;
+			check_node->value = strdup(value);
 			/*printf("Update--->\t%s\n", key);*/
 			return (1);
 		}
@@ -66,7 +74,7 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 		check_node = check_node->next;
 	}
 	/*Handling Collisions*/
-	node = create_node(key, value_copy);
+	node = create_node(key, value);
 	collision->next = node;
 	/*printf("Handling Collisions %s--->\t%s\n", collision->key, key);*/
 
