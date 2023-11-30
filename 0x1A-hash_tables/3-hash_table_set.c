@@ -13,7 +13,6 @@ hash_node_t *create_node(const char *key, const char *value)
 
 	if (!node)
 	{
-		free(value);
 		return (NULL);
 	}
 
@@ -44,6 +43,11 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 	if (ht->array[index] == NULL)
 	{
 		node = create_node(key, value);
+		if (node == NULL)
+		{
+			free(value);
+			return (0);
+		}
 		ht->array[index] = node;
 		/*printf("Insert at--->\t%s value[%s]\n", key, node->value);*/
 		return (1);
@@ -64,6 +68,11 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 	}
 	/*Handling Collisions*/
 	node = create_node(key, value);
+	if (node == NULL)
+	{
+		free(value);
+		return (0);
+	}
 	collision->next = node;
 	/*printf("Handling Collisions %s--->\t%s\n", collision->key, key);*/
 
