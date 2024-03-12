@@ -29,12 +29,12 @@ int binary_search(int *array, size_t size, int value)
 				printf("\n");
 		}
 
-		mid = floor((right + left) / 2);
+		mid = ((right + left) / 2);
 
 		if (array[mid] < value)
 			left = mid + 1;
 		else if (array[mid] > value)
-			right = mid;
+			right = mid - 1;
 		else
 			return (mid);
 	}
